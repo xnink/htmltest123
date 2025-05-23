@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜜雪刷奶绿</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function submitForm() {
+            var formData = new FormData(document.getElementById("signInForm"));
+ 
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "sign.php", true);
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    alert(xhr.responseText);
+                } else {
+                    alert("Error: " + xhr.status);
+                }
+            };
+            xhr.send(formData);
+            return false; // Prevent default form submission
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>蜜雪刷奶绿</h1>
+        <form id="signInForm">
+            <label for="token">输入token：</label><br>
+            <input type="text" id="token" name="token" required><br>
+			<label for="startTime">选择开始时间（例如 13:00）：</label><br>
+            <input type="time" id="startTime" name="startTime" required><br>
+            <button type="submit">开刷</button>
+        </form>
+    </div>
+</body>
+</html>
